@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    align-items: center;
+    padding: 17px 10px;
+    gap: 7px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.container:hover,
+.active {
+    cursor: pointer;
+    background-color: var(--hover);
+}

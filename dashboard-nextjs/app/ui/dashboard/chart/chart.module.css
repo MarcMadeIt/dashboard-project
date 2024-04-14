@@ -1,0 +1,27 @@
+.container {
+    height: 430px;
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.title {
+    font-weight: 200;
+    color: var(--textSoft);
+    font-size: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .container {
+        padding: 10px;
+    }
+
+    .title {
+        margin: 0;
+        padding: 10px;
+        font-size: 17px;
+    }
+}

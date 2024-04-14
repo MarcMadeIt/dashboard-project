@@ -1,0 +1,133 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bgSoft);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.title {
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: var(--text);
+    font-size: 20px;
+    padding: 10px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navStart {
+    display: flex;
+    align-items: center;
+
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg);
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+.input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.input::placeholder {
+    color: var(--textSoft);
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.divider {
+    display: none;
+}
+
+.dividerContent {
+    display: none;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    .divider {
+        display: block;
+        cursor: pointer;
+    }
+
+    .dividerContent {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        background-color: var(--bgSoft);
+        padding: 20px;
+        height: 100vh;
+        width: 40%;
+        transition: transform 0.5s ease;
+        transform: translateX(-100%);
+
+    }
+
+    .showContent {
+        transform: translateX(0);
+        transition: transform 0.5s ease;
+    }
+
+    .dividerContent ul {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 550px) {
+
+
+    .search {
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .menu {
+        gap: 10px;
+    }
+
+    .searchIcon {
+        font-size: 25px;
+    }
+
+    .input {
+        display: none;
+    }
+
+    .dividerContent {
+        width: 90%;
+    }
+
+}

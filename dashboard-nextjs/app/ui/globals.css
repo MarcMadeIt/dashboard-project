@@ -1,0 +1,59 @@
+:root {
+    --bg: #05141e;
+    --bgSoft: #082030;
+    --text: #fff;
+    --textSoft: #b7bac1;
+
+    --hover: #05141e;
+    --action: #4ECDC4;
+    --action-hover: #58ebe1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--textSoft);
+}
+
+
+::-webkit-scrollbar {
+    height: 0px;
+    width: 4px;
+    background: var(--textSoft);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: var(--textSoft);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 550px) {
+
+    span,
+    td {
+        font-size: 12px;
+    }
+
+}

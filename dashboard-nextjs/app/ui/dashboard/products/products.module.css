@@ -1,0 +1,129 @@
+.container {
+    background-color: var(--bgSoft);
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 6px;
+    outline: none;
+    background-color: var(--action);
+    border: none;
+    color: var(--bg);
+    font-size: 14px;
+    width: 100px;
+    cursor: pointer;
+    transition: 300ms ease;
+    font-weight: 600;
+}
+
+.add:hover {
+    box-shadow: var(--action-hover) 0 0 6px;
+    transition: 300ms ease;
+    background-color: var(--action-hover);
+}
+
+.table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.table td {
+    padding: 15px 0;
+}
+
+.table tbody td {
+    font-size: 14px;
+}
+
+.table thead td {
+    font-weight: 500;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.productImage {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.button {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+}
+
+.edit {
+    background-color: forestgreen;
+}
+
+.delete {
+    background-color: darkred;
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .edit,
+    .delete {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+
+    .desc,
+    .date {
+        display: none;
+    }
+
+    .add {
+
+        padding: 7px;
+        width: 80px;
+
+    }
+
+
+    .table td {
+        font-size: 10px;
+        text-align: center;
+    }
+
+}

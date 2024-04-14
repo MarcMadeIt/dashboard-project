@@ -1,0 +1,80 @@
+.container {
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.title {
+    font-weight: 200;
+    color: var(--textSoft);
+    font-size: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+}
+
+.table td {
+    padding: 20px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.userImage {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status {
+    border-radius: 6px;
+    padding: 5px;
+    font-size: 14px;
+    color: var(--text);
+
+}
+
+.pending {
+    background-color: rgba(218, 165, 32, 0.592);
+}
+
+.done {
+    background-color: rgba(50, 205, 50, 0.585);
+}
+
+.cancelled {
+    background-color: rgba(220, 20, 60, 0.63);
+}
+
+@media screen and (max-width: 1000px) {
+
+
+    .container {
+        padding: 10px;
+    }
+
+    .table td {
+        padding: 15px 5px;
+    }
+
+    .title {
+        padding: 10px;
+        font-size: 17px;
+        margin: 0;
+    }
+
+
+    .done,
+    .cancelled,
+    .pending {
+        font-size: 12px;
+    }
+
+
+
+}
