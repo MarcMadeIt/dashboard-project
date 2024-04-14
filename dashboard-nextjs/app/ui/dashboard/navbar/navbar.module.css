@@ -78,13 +78,31 @@
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 2;
+        z-index: 3;
         background-color: var(--bgSoft);
         padding: 20px;
         height: 100vh;
         width: 40%;
         transition: transform 0.5s ease;
         transform: translateX(-100%);
+        border-radius: 0 10px 10px 0;
+        border-right: 5px solid var(--bg);
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+
+    }
+
+    .showOverlay {
+        display: block;
 
     }
 
@@ -125,7 +143,7 @@
     }
 
     .dividerContent {
-        width: 90%;
+        width: 70%;
     }
 
 }

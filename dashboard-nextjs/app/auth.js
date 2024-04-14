@@ -1,44 +1,44 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
-import { authConfig } from "./authconfig"
-import { connectToMongoDB } from "./lib/utils"
-import bcrypt from "bcrypt"
-import { User } from "./lib/models/user.model"
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { authConfig } from "./authconfig";
+import { connectToMongoDB } from "./lib/utils";
+import bcrypt from "bcrypt";
+import { User } from "./lib/models/user.model";
 
-// Corrected login function
 const login = async (credentials) => {
     try {
-        await connectToMongoDB(); // Await connection to MongoDB
-        const user = await User.findOne({ username: credentials.username })
+        await connectToMongoDB(); // Check if MongoDB connection is established properly
+        const user = await User.findOne({ username: credentials.username });
         if (!user) {
-            throw new Error("User not found.")
+            throw new Error("User not found.");
         }
-        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
+        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 
-        if (!isPasswordCorrect) throw new Error("Invalid password.")
+        if (!isPasswordCorrect) {
+            throw new Error("Invalid password.");
+        }
 
         return {
             user,
             message: "Successfully logged in.",
-        }
-
+        };
     } catch (err) {
-        console.log(err)
-        throw new Error("Failed to login.")
+        console.error(err);
+        throw new Error("Failed to login.");
     }
-}
+};
 
-// Move export statement outside of the login function
 export const { signIn, signOut, auth } = NextAuth({
     ...authConfig,
     providers: [
         CredentialsProvider({
             async authorize(credentials) {
                 try {
-                    const user = await login(credentials)
+                    const user = await login(credentials);
                     return user;
                 } catch (err) {
-                    return null
+                    console.error(err);
+                    return null;
                 }
             },
         }),
@@ -53,11 +53,10 @@ export const { signIn, signOut, auth } = NextAuth({
         },
         async session({ session, token }) {
             if (token) {
-                session.username = token.username;
-                session.img = token.img;
+                session.user.username = token.username;
+                session.user.img = token.img;
             }
             return session;
-        }
-    }
-
+        },
+    },
 });

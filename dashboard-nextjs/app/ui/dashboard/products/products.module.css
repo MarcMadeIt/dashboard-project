@@ -87,12 +87,17 @@
 
 @media screen and (max-width: 1000px) {
     .container {
+        margin-top: 10px;
         padding: 10px;
         width: 100%;
     }
 
     .table {
         width: 100%;
+    }
+
+    .table td {
+        font-size: 12px;
     }
 
 
@@ -118,12 +123,6 @@
         padding: 7px;
         width: 80px;
 
-    }
-
-
-    .table td {
-        font-size: 10px;
-        text-align: center;
     }
 
 }

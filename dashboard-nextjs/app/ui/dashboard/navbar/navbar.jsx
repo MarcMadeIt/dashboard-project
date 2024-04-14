@@ -119,6 +119,12 @@ const Navbar = () => {
 
   return (
     <>
+      <div
+        className={`${styles.overlay} ${
+          showDividerContent ? styles.showOverlay : ""
+        }`}
+        onClick={handleToggleDividerContent}
+      ></div>
       <div className={styles.container}>
         <div className={styles.navStart}>
           <div className={styles.divider} onClick={handleToggleDividerContent}>
