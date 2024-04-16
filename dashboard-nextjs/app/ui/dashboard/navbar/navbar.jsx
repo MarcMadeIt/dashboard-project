@@ -8,13 +8,10 @@ import {
   MdOutlineChat,
   MdPublic,
   MdSearch,
-} from "react-icons/md";
-import {
   MdAnalytics,
   MdAttachMoney,
   MdDashboard,
   MdHelpCenter,
-  MdLogout,
   MdPeople,
   MdSettings,
   MdShoppingBag,
@@ -24,6 +21,7 @@ import {
 import { TiThMenu } from "react-icons/ti";
 import MenuLink from "../sidebar/menuLink/menuLink";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const menuItems = [
   {
@@ -156,11 +154,27 @@ const Navbar = () => {
           showDividerContent ? styles.showContent : ""
         }`}
       >
-        <MdArrowBack
-          size={30}
-          onClick={handleToggleDividerContent}
-          className={styles.backIcon}
-        />
+        <div className={styles.dividerTop}>
+          <MdArrowBack
+            size={30}
+            onClick={handleToggleDividerContent}
+            className={styles.backIcon}
+          />
+          <div className={styles.user}>
+            <Image
+              src={"/noavatar.png"}
+              className={styles.userImage}
+              alt=""
+              width="40"
+              height="40"
+              priority={true}
+            />
+            <div className={styles.userDetails}>
+              <span className={styles.username}>Marc</span>
+              <span className={styles.userTitle}>Administrator</span>
+            </div>
+          </div>
+        </div>
         <ul>
           {menuItems.map((cat) => (
             <li key={cat.title}>

@@ -13,3 +13,13 @@
     cursor: pointer;
     background-color: var(--hover);
 }
+
+
+@media screen and (max-width: 550px) {
+
+    .container {
+        font-size: 12px;
+        padding: 15px 10px;
+    }
+
+}
