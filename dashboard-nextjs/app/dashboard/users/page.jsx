@@ -24,7 +24,7 @@ const UsersPage = async ({ searchParams }) => {
           <tr>
             <td>Name</td>
             <td className={styles.email}>Email</td>
-            <td>Created at</td>
+            <td className={styles.date}>Created at</td>
             <td>Role</td>
             <td>State</td>
             <td>Actions</td>
@@ -52,7 +52,7 @@ const UsersPage = async ({ searchParams }) => {
               <td className={styles.email}>
                 <span>{user.email}</span>
               </td>
-              <td>
+              <td className={styles.date}>
                 {" "}
                 <span> {user.createdAt?.toString().slice(4, 16)}</span>
               </td>

@@ -23,11 +23,11 @@ const ProductsPage = async ({ searchParams }) => {
         <thead>
           <tr>
             <td>Product name</td>
-            <td>Category</td>
+            <td className={styles.cat}>Category</td>
             <td className={styles.desc}>Desc</td>
             <td>Price</td>
             <td className={styles.date}>Created At</td>
-            <td className={styles.quan}>Quantity</td>
+            <td>Quantity</td>
             <td>Action</td>
           </tr>
         </thead>
@@ -48,7 +48,7 @@ const ProductsPage = async ({ searchParams }) => {
                   <span> {product.name}</span>
                 </div>
               </td>
-              <td>
+              <td className={styles.cat}>
                 <span>{product.cat}</span>
               </td>
               <td className={styles.desc}>

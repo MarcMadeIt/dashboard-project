@@ -60,6 +60,9 @@
 .userImage {
     border-radius: 50%;
     object-fit: cover;
+    width: 40px;
+    height: 40px;
+
 }
 
 .buttons {
@@ -114,7 +117,8 @@
     }
 
 
-    .email {
+    .email,
+    .date {
         display: none;
     }
 
@@ -122,6 +126,13 @@
 
         padding: 7px;
         width: 80px;
+
+    }
+
+
+    .userImage {
+        width: 30px;
+        height: 30px;
 
     }
 

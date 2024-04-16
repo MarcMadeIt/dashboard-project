@@ -60,6 +60,8 @@
 .productImage {
     border-radius: 50%;
     object-fit: cover;
+    width: 40px;
+    height: 40px;
 }
 
 .buttons {
@@ -104,7 +106,7 @@
 }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 550px) {
 
     .edit,
     .delete {
@@ -114,7 +116,8 @@
 
 
     .desc,
-    .date {
+    .date,
+    .cat {
         display: none;
     }
 
@@ -122,7 +125,12 @@
 
         padding: 7px;
         width: 80px;
+    }
 
+    .productImage {
+
+        width: 30px;
+        height: 30px;
     }
 
 }
