@@ -94,7 +94,7 @@ const Navbar = () => {
 
   const truncateTitle = (title, maxLength) => {
     if (title.length > maxLength) {
-      return title.substring(0, maxLength) + "...";
+      return title.substring(0, maxLength);
     }
     return title;
   };
@@ -129,7 +129,7 @@ const Navbar = () => {
             <TiThMenu size={30} />
           </div>
           <div className={styles.title}>
-            {truncateTitle(pathname.split("/").pop(), 7)}
+            {truncateTitle(pathname.split("/").pop(), 9)}
           </div>
         </div>
 

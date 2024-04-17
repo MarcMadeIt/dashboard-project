@@ -2,12 +2,12 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { authConfig } from "./authconfig";
 import { connectToMongoDB } from "./lib/utils";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { User } from "./lib/models/user.model";
 
 const login = async (credentials) => {
     try {
-        await connectToMongoDB(); // Check if MongoDB connection is established properly
+        await connectToMongoDB();
         const user = await User.findOne({ username: credentials.username });
         if (!user) {
             throw new Error("User not found.");
@@ -47,14 +47,14 @@ export const { signIn, signOut, auth } = NextAuth({
         async jwt({ token, user }) {
             if (user) {
                 token.username = user.username;
-                token.img = user.img;
+                //token.img = user.img;
             }
             return token;
         },
         async session({ session, token }) {
             if (token) {
                 session.user.username = token.username;
-                session.user.img = token.img;
+                // session.user.img = token.img;
             }
             return session;
         },

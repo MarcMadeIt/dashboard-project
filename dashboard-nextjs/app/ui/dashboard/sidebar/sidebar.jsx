@@ -80,14 +80,14 @@ const menuItems = [
 ];
 
 const Sidebar = async ({ sidebarOpen }) => {
-  const { user } = await auth();
+  const user = await auth();
   console.log(user);
 
   return (
     <div className={`${styles.container} ${sidebarOpen ? styles.open : ""}`}>
       <div className={styles.user}>
         <Image
-          src={user.img || "/noavatar.png"}
+          src={"/noavatar.png"}
           className={styles.userImage}
           alt=""
           width="50"
@@ -95,7 +95,7 @@ const Sidebar = async ({ sidebarOpen }) => {
           priority={true}
         />
         <div className={styles.userDetails}>
-          <span className={styles.username}>{user.username}</span>
+          <span className={styles.username}>Marc</span>
           <span className={styles.userTitle}>Administrator</span>
         </div>
       </div>

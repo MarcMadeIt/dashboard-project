@@ -22,7 +22,7 @@ const UsersPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Name</td>
+            <td>Username</td>
             <td className={styles.email}>Email</td>
             <td className={styles.date}>Created at</td>
             <td>Role</td>

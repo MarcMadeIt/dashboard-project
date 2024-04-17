@@ -3,7 +3,7 @@
 import { connectToMongoDB } from "./utils";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { Product } from "./models/product.model.js";
 import { User } from "./models/user.model";
 import { signIn } from "../auth";
@@ -15,7 +15,7 @@ export const addUser = async (formData, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(formData.get('password'), salt);
 
-        const { username, email, phone, password, role, status } = Object.fromEntries(formData);
+        const { username, email, phone, role, status } = Object.fromEntries(formData);
 
         let img;
         if (formData.get('img')) {
@@ -60,13 +60,13 @@ export const addUser = async (formData, res) => {
 export const updateUser = async (formData, res) => {
     const { id, username, email, phone, password, role, status } = Object.fromEntries(formData);
 
-    // let img;
-    // if (formData.get('img')) {
-    //     const imgData = await formData.get('img').arrayBuffer();
-    //     img = Buffer.from(imgData);
-    // } else {
-    //     console.error("Error: No image data provided");
-    // }
+    let img;
+    if (formData.get('img')) {
+        const imgData = await formData.get('img').arrayBuffer();
+        img = Buffer.from(imgData);
+    } else {
+        console.error("Error: No image data provided");
+    }
 
     try {
         connectToMongoDB();
@@ -221,14 +221,18 @@ export const deleteProduct = async (formData, res) => {
 
 
 
-export const authenticate = async (formData, res) => {
-
+export const authenticate = async (formData) => {
     const { username, password } = Object.fromEntries(formData);
 
     try {
         await signIn("credentials", { username, password });
+
+        return "Authentication successful";
     } catch (err) {
-        console.log(err);
+        console.error("Authentication error:", err);
+        if (err.message.includes("CredentialsSignin")) {
+            return "Wrong Credentials";
+        }
         throw err;
     }
-}
+};
