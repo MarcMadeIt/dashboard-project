@@ -13,7 +13,7 @@ import {
   MdSupervisedUserCircle,
   MdWork,
 } from "react-icons/md";
-import { auth, signOut } from "@/app/auth.js";
+import { auth, signOut } from "../../../auth.js";
 
 const menuItems = [
   {
@@ -80,8 +80,8 @@ const menuItems = [
 ];
 
 const Sidebar = async ({ sidebarOpen }) => {
-  const user = await auth();
-  console.log(user);
+  const session = await auth();
+  console.log(session);
 
   return (
     <div className={`${styles.container} ${sidebarOpen ? styles.open : ""}`}>
@@ -95,7 +95,7 @@ const Sidebar = async ({ sidebarOpen }) => {
           priority={true}
         />
         <div className={styles.userDetails}>
-          <span className={styles.username}>Marc</span>
+          <span className={styles.username}>{session.user.username}</span>
           <span className={styles.userTitle}>Administrator</span>
         </div>
       </div>

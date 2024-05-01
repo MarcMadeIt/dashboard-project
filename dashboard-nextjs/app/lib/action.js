@@ -221,11 +221,11 @@ export const deleteProduct = async (formData, res) => {
 
 
 
-export const authenticate = async (formData) => {
+export const authenticate = (formData) => {
     const { username, password } = Object.fromEntries(formData);
 
     try {
-        await signIn("credentials", { username, password });
+        signIn("credentials", { username, password });
 
         return "Authentication successful";
     } catch (err) {

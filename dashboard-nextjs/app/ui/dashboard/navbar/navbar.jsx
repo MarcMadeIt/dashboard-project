@@ -170,7 +170,7 @@ const Navbar = () => {
               priority={true}
             />
             <div className={styles.userDetails}>
-              <span className={styles.username}>Marc</span>
+              <span className={styles.username}></span>
               <span className={styles.userTitle}>Administrator</span>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import Credentials from "next-auth/providers/credentials";
 import { authConfig } from "./authconfig";
 import { connectToMongoDB } from "./lib/utils";
 import bcrypt from "bcryptjs";
@@ -19,7 +19,11 @@ const login = async (credentials) => {
         }
 
         return {
-            user,
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email
+            },
             message: "Successfully logged in.",
         };
     } catch (err) {
@@ -29,12 +33,15 @@ const login = async (credentials) => {
 };
 
 export const { signIn, signOut, auth } = NextAuth({
+
     ...authConfig,
     providers: [
-        CredentialsProvider({
+        Credentials({
             async authorize(credentials) {
+                console.log(credentials);
                 try {
                     const user = await login(credentials);
+                    console.log("User object returned from login function:", user);
                     return user;
                 } catch (err) {
                     console.error(err);
@@ -45,18 +52,18 @@ export const { signIn, signOut, auth } = NextAuth({
     ],
     callbacks: {
         async jwt({ token, user }) {
+            console.log("User object received in jwt callback:", user);
             if (user) {
                 token.username = user.username;
-                //token.img = user.img;
+                token.email = user.email;
             }
             return token;
         },
         async session({ session, token }) {
-            if (token) {
-                session.user.username = token.username;
-                // session.user.img = token.img;
+            if (token && token.user) {
+                session.user = token.user; // Set the entire user object in the session
             }
             return session;
-        },
-    },
+        }
+    }
 });
